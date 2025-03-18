@@ -6,9 +6,11 @@ const selectSearchKeyword = (state) => state.products?.searchKeyword
 
 const selectFilterOption = (state) => state.products?.selectedPricingOption
 
-export const selectFilteredProducts = createSelector([selectAllProducts, selectSearchKeyword, selectFilterOption],
-    (products, searchTerm, filterOption) => {
-        if (!searchTerm && !filterOption) return products;
+const isReset = (state) => state.products?.isReset
+
+export const selectFilteredProducts = createSelector([selectAllProducts, selectSearchKeyword, selectFilterOption, isReset],
+    (products, searchTerm, filterOption, isReset) => {
+        if (!searchTerm && !filterOption || isReset) return products;
 
         if (searchTerm) {
             return products.filter((product) =>
