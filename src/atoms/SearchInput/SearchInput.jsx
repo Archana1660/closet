@@ -1,7 +1,5 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
 
 import styled from "styled-components";
 
@@ -16,7 +14,7 @@ const StyledInput = styled.input`
   font-size: 1rem;
 `;
 
-const StyledForm = styled.form`
+const StyledSearchSection = styled.section`
   background-color: #302f2f;
   display: flex;
   justify-content: space-between;
@@ -29,15 +27,9 @@ const StyledButton = styled.button`
   color: ${Colors.TEXT_COLOR};
 `;
 
-export const SearchInput = () => {
-  const [keyword, setKeyword] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault;
-  };
-
+export const SearchInput = ({ keyword, setKeyword }) => {
   return (
-    <StyledForm onSubmit={handleSubmit}>
+    <StyledSearchSection>
       <StyledInput
         id="searchInput"
         value={keyword}
@@ -50,6 +42,6 @@ export const SearchInput = () => {
       <StyledButton>
         <FontAwesomeIcon icon={faSearch} />
       </StyledButton>
-    </StyledForm>
+    </StyledSearchSection>
   );
 };

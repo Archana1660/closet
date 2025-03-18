@@ -6,7 +6,7 @@ const StyledCheckBoxLabel = styled.label`
   color: ${Colors.TEXT_COLOR};
 `;
 
-const StyledForm = styled.form`
+const StyledSection = styled.section`
   display: flex;
   gap: 1rem;
   padding: 1rem;
@@ -19,9 +19,23 @@ const StyledFormTitle = styled.p`
   color: ${Colors.TEXT_COLOR};
 `;
 
-export const CheckboxInput = ({ pricingOptionList }) => {
+export const CheckboxInput = ({
+  pricingOptionList,
+  selectedPriceOption,
+  setSelectedPriceOption,
+}) => {
+  const handlePricingOption = (e) => {
+    const { value, checked } = e.target;
+    setSelectedPriceOption(
+      (prev) =>
+        checked
+          ? [...prev, parseInt(value)]
+          : prev.filter((item) => item !== value) // Add/remove item
+    );
+  };
+
   return (
-    <StyledForm onSubmit={(e) => e.preventDefault}>
+    <StyledSection>
       <StyledFormTitle>Pricing Options</StyledFormTitle>
       {Object.keys(pricingOptionList).map((option) => {
         return (
@@ -29,8 +43,11 @@ export const CheckboxInput = ({ pricingOptionList }) => {
             <input
               type="checkbox"
               id={pricingOptionList[option].value}
-              name={option}
               value={pricingOptionList[option].value}
+              checked={selectedPriceOption.includes(
+                pricingOptionList[option].value
+              )}
+              onChange={handlePricingOption}
             />
             <StyledCheckBoxLabel htmlFor={pricingOptionList[option].value}>
               {pricingOptionList[option].label}
@@ -38,6 +55,6 @@ export const CheckboxInput = ({ pricingOptionList }) => {
           </div>
         );
       })}
-    </StyledForm>
+    </StyledSection>
   );
 };
