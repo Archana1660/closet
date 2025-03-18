@@ -11,4 +11,5 @@ export const StyledLogo = styled.a`
 export const StyledH1 = styled.h1`
   font-size: 1rem;
   font-weight: normal;
+  overflow: hidden;
 `;

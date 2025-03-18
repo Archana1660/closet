@@ -10,6 +10,9 @@ const StyledForm = styled.form`
   display: flex;
   gap: 1rem;
   padding: 1rem;
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
 `;
 
 const StyledFormTitle = styled.p`
@@ -29,7 +32,7 @@ export const CheckboxInput = ({ pricingOptionList }) => {
               name={option}
               value={pricingOptionList[option].value}
             />
-            <StyledCheckBoxLabel htmlFor={pricingOptionList[option]}>
+            <StyledCheckBoxLabel htmlFor={pricingOptionList[option].value}>
               {pricingOptionList[option].label}
             </StyledCheckBoxLabel>
           </div>
