@@ -1,7 +1,6 @@
-import React from "react";
-import { Product } from "../molecules/Product";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { Product } from "../molecules/Product";
 
 const StyledProductSection = styled.section`
   display: grid;
@@ -34,7 +33,7 @@ export const ProductList = ({ productData, productDataLoading = true }) => {
 };
 
 ProductList.prototype = {
-  productData: PropTypes.shape({
+  productData: PropTypes.arrayOf({
     creator: PropTypes.string,
     id: PropTypes.string,
     imagePath: PropTypes.string,
@@ -42,4 +41,5 @@ ProductList.prototype = {
     pricingOption: PropTypes.number,
     title: PropTypes.string,
   }),
+  productDataLoading: PropTypes.boolean,
 };

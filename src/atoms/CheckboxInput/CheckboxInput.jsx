@@ -1,5 +1,7 @@
 import styled from "styled-components";
+
 import { Colors } from "../../utils/Colors";
+import { pricingOptionList } from "../../utils/enumPricingOption";
 
 const StyledCheckBoxLabel = styled.label`
   margin-left: 0.5rem;
@@ -20,7 +22,6 @@ const StyledFormTitle = styled.p`
 `;
 
 export const CheckboxInput = ({
-  pricingOptionList,
   selectedPriceOption,
   setSelectedPriceOption,
 }) => {

@@ -1,10 +1,11 @@
-import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
-import { getProductOption } from "../utils/getProductOption";
-import { Colors } from "../utils/Colors";
-import { pricingOptionList } from "../utils/enumPricingOption";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faIndianRupeeSign } from "@fortawesome/free-solid-svg-icons";
+
+import { Colors } from "../utils/Colors";
+import { getProductOption } from "../utils/getProductOption";
+import { pricingOptionList } from "../utils/enumPricingOption";
 
 const StyledImage = styled.img`
   width: 100%;
@@ -39,4 +40,15 @@ export const Product = ({ product }) => {
       </StyledProductionSection>
     </section>
   );
+};
+
+Product.prototype = {
+  product: PropTypes.shape({
+    creator: PropTypes.string,
+    id: PropTypes.string,
+    imagePath: PropTypes.string,
+    price: PropTypes.number,
+    pricingOption: PropTypes.number,
+    title: PropTypes.string,
+  }),
 };

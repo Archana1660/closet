@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -44,4 +45,9 @@ export const SearchInput = ({ keyword, setKeyword }) => {
       </StyledButton>
     </StyledSearchSection>
   );
+};
+
+SearchInput.prototype = {
+  keyword: PropTypes.text,
+  setKeyword: PropTypes.func,
 };

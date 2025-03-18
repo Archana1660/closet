@@ -4,13 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { CheckboxInput } from "../atoms/CheckboxInput/CheckboxInput";
 
-import { fetchProducts } from "../redux/slice/ProductStoreSlice";
 import { SearchInput } from "../atoms/SearchInput/SearchInput";
 import { ResetButton } from "../atoms/ResetButton/ResetButton";
-
-import { pricingOptionList } from "../utils/enumPricingOption";
 import { ProductList } from "../organisms/ProductList";
 
+import { fetchProducts } from "../redux/slice/ProductStoreSlice";
 import {
   setSearchKeyword,
   setFilterOption,
@@ -47,7 +45,6 @@ export const ShoppingDashboardPage = () => {
           <SearchInput keyword={keyword} setKeyword={setKeyword} />
           <StyledSection>
             <CheckboxInput
-              pricingOptionList={pricingOptionList}
               selectedPriceOption={selectedPriceOption}
               setSelectedPriceOption={setSelectedPriceOption}
             />
