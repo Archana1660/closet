@@ -1,6 +1,8 @@
 import React from "react";
 import { StyledResetButton } from "./ResetButtonStyle";
 
-export const ResetButton = ({ buttonText }) => {
-  return <StyledResetButton>{buttonText}</StyledResetButton>;
+export const ResetButton = ({ buttonText, handleReset }) => {
+  return (
+    <StyledResetButton onClick={handleReset}>{buttonText}</StyledResetButton>
+  );
 };

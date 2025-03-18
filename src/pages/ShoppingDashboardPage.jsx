@@ -14,6 +14,7 @@ import { ProductList } from "../organisms/ProductList";
 import {
   setSearchKeyword,
   setFilterOption,
+  resetOptions,
 } from "../redux/slice/ProductStoreSlice";
 import { selectFilteredProducts } from "../redux/selectors/selectProduct";
 
@@ -31,6 +32,12 @@ export const ShoppingDashboardPage = () => {
     e.preventDefault();
     dispatch(setSearchKeyword(keyword));
     dispatch(setFilterOption(selectedPriceOption));
+  };
+
+  const handleReset = () => {
+    setKeyword("");
+    setSelectedPriceOption([]);
+    dispatch(resetOptions(true));
   };
 
   const productDataLoading = useSelector((state) => state.products?.isLoading);
@@ -51,7 +58,7 @@ export const ShoppingDashboardPage = () => {
               selectedPriceOption={selectedPriceOption}
               setSelectedPriceOption={setSelectedPriceOption}
             />
-            <ResetButton buttonText="Reset" />
+            <ResetButton buttonText="Reset" handleReset={handleReset} />
           </StyledSection>
         </form>
         <ProductList
