@@ -1,12 +1,12 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-const selectAllProducts = (state) => state.products?.data
+const getAllProducts = (state) => state.products?.data
 
-const selectSearchKeyword = (state) => state.products?.searchKeyword
+const getSearchKeyword = (state) => state.products?.searchKeyword
 
-const selectFilterOption = (state) => state.products?.selectedPricingOption
+const getFilterOption = (state) => state.products?.selectedPricingOption
 
-export const selectFilteredProducts = createSelector([selectAllProducts, selectSearchKeyword, selectFilterOption],
+export const selectFilteredProducts = createSelector([getAllProducts, getSearchKeyword, getFilterOption],
     (products, searchTerm, filterOption) => {
         if (!searchTerm && !filterOption) return products;
 

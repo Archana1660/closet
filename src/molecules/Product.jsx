@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faIndianRupeeSign } from "@fortawesome/free-solid-svg-icons";
 
 import { Colors } from "../utils/Colors";
-import { getProductOption } from "../utils/getProductOption";
+import { getPriceLabel } from "../utils/getPriceLabel";
 import { pricingOptionList } from "../utils/enumPricingOption";
 
 const StyledImage = styled.img`
@@ -35,7 +35,7 @@ export const Product = ({ product }) => {
             {product.price}
           </p>
         ) : (
-          <p>{getProductOption(product)[0]?.label}</p>
+          <p>{getPriceLabel(product)}</p>
         )}
       </StyledProductionSection>
     </section>

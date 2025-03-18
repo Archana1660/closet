@@ -39,6 +39,7 @@ export const CheckboxInput = ({
     <StyledSection>
       <StyledFormTitle>Pricing Options</StyledFormTitle>
       {Object.keys(pricingOptionList).map((option) => {
+        // get the list of price name and value
         return (
           <div key={pricingOptionList[option].value}>
             <input
