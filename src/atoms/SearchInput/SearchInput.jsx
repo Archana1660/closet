@@ -39,6 +39,7 @@ export const SearchInput = () => {
   return (
     <StyledForm onSubmit={handleSubmit}>
       <StyledInput
+        id="searchInput"
         value={keyword}
         type="text"
         placeholder="Find the item you are looking for"
