@@ -1,12 +1,19 @@
-# React + Vite
+# Steps to open the application
+1. please enter the command npm install to all the library installed for application working
+2. after completion of 1st step, run npm run dev
+3. the project will be available at http://localhost:5173/?
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features covered
+1. Search with input keyword
+2. search with price option checkbox
+3. reset the search
+4. Responsive
 
-Currently, two official plugins are available:
+## Features not covered
+1. test code during implementation
+2. typscript
+3. infinite scroll
+4. price range slider
+5. sorting of the products
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## NOTE: Please click on the submit button (magnifying glass icon) for the search and price option 
