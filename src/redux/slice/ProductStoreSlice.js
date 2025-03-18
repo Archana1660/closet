@@ -9,11 +9,22 @@ export const fetchProducts = createAsyncThunk("fetchTodos", async () => {
 const initialState = {
     isLoading: false,
     data: null,
-    isError: false
+    isError: false,
+    searchKeyword: "",
+    selectedPricingOption: null
 }
+
 const ProductStoreSlice = createSlice({
     name: "Products",
     initialState: initialState,
+    reducers: {
+        setSearchKeyword: (state, action) => {
+            state.searchKeyword = action.payload
+        },
+        setFilterOption: (state, action) => {
+            state.selectedPricingOption = action.payload
+        },
+    },
     extraReducers: (builder) => {
         builder.addCase(fetchProducts.pending, (state, action) => {
             state.isLoading = true
@@ -27,5 +38,5 @@ const ProductStoreSlice = createSlice({
         })
     }
 })
-export const { addHabit } = ProductStoreSlice.actions;
+export const { setSearchKeyword, setFilterOption } = ProductStoreSlice.actions;
 export default ProductStoreSlice.reducer;

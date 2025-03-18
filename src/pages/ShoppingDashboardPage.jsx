@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { CheckboxInput } from "../atoms/CheckboxInput/CheckboxInput";
@@ -11,14 +11,30 @@ import { ResetButton } from "../atoms/ResetButton/ResetButton";
 import { pricingOptionList } from "../utils/enumPricingOption";
 import { ProductList } from "../organisms/ProductList";
 
+import {
+  setSearchKeyword,
+  setFilterOption,
+} from "../redux/slice/ProductStoreSlice";
+import { selectFilteredProducts } from "../redux/selectors/selectProduct";
+
 const StyledSection = styled.section`
   display: flex;
   justify-content: space-between;
 `;
 export const ShoppingDashboardPage = () => {
+  const [keyword, setKeyword] = useState("");
+  const [selectedPriceOption, setSelectedPriceOption] = useState([]);
+
   const dispatch = useDispatch();
-  const productData = useSelector((state) => state.products?.data);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(setSearchKeyword(keyword));
+    dispatch(setFilterOption(selectedPriceOption));
+  };
+
   const productDataLoading = useSelector((state) => state.products?.isLoading);
+  const filteredProducts = useSelector(selectFilteredProducts);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -27,13 +43,19 @@ export const ShoppingDashboardPage = () => {
   return (
     <>
       <section>
-        <SearchInput />
-        <StyledSection>
-          <CheckboxInput pricingOptionList={pricingOptionList} />
-          <ResetButton buttonText="Reset" />
-        </StyledSection>
+        <form onSubmit={handleSubmit}>
+          <SearchInput keyword={keyword} setKeyword={setKeyword} />
+          <StyledSection>
+            <CheckboxInput
+              pricingOptionList={pricingOptionList}
+              selectedPriceOption={selectedPriceOption}
+              setSelectedPriceOption={setSelectedPriceOption}
+            />
+            <ResetButton buttonText="Reset" />
+          </StyledSection>
+        </form>
         <ProductList
-          productData={productData}
+          productData={filteredProducts}
           productDataLoading={productDataLoading}
         />
       </section>
