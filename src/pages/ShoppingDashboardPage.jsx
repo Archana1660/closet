@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { CheckboxInput } from "../atoms/CheckboxInput/CheckboxInput";
 
@@ -8,14 +8,17 @@ import { fetchProducts } from "../redux/slice/ProductStoreSlice";
 import { SearchInput } from "../atoms/SearchInput/SearchInput";
 import { ResetButton } from "../atoms/ResetButton/ResetButton";
 
-import { pricingOption } from "../utils/enumPricingOption";
+import { pricingOptionList } from "../utils/enumPricingOption";
+import { ProductList } from "../organisms/ProductList";
 
 const StyledSection = styled.section`
-  /* padding: 1rem; */
+  display: flex;
+  justify-content: space-between;
 `;
-
 export const ShoppingDashboardPage = () => {
   const dispatch = useDispatch();
+  const productData = useSelector((state) => state.products?.data);
+  const productDataLoading = useSelector((state) => state.products?.isLoading);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -23,13 +26,17 @@ export const ShoppingDashboardPage = () => {
 
   return (
     <>
-      <StyledSection>
+      <section>
         <SearchInput />
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <CheckboxInput pricingOption={pricingOption} />
+        <StyledSection>
+          <CheckboxInput pricingOptionList={pricingOptionList} />
           <ResetButton buttonText="Reset" />
-        </div>
-      </StyledSection>
+        </StyledSection>
+        <ProductList
+          productData={productData}
+          productDataLoading={productDataLoading}
+        />
+      </section>
     </>
   );
 };
