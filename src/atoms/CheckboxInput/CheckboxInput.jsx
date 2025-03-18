@@ -16,21 +16,21 @@ const StyledFormTitle = styled.p`
   color: ${Colors.TEXT_COLOR};
 `;
 
-export const CheckboxInput = ({ pricingOption }) => {
+export const CheckboxInput = ({ pricingOptionList }) => {
   return (
     <StyledForm onSubmit={(e) => e.preventDefault}>
       <StyledFormTitle>Pricing Options</StyledFormTitle>
-      {Object.keys(pricingOption).map((option) => {
+      {Object.keys(pricingOptionList).map((option) => {
         return (
-          <div key={pricingOption[option]}>
+          <div key={pricingOptionList[option].value}>
             <input
               type="checkbox"
-              id={pricingOption[option]}
+              id={pricingOptionList[option].value}
               name={option}
-              value={pricingOption[option]}
+              value={pricingOptionList[option].value}
             />
-            <StyledCheckBoxLabel htmlFor={pricingOption[option]}>
-              {option}
+            <StyledCheckBoxLabel htmlFor={pricingOptionList[option]}>
+              {pricingOptionList[option].label}
             </StyledCheckBoxLabel>
           </div>
         );
