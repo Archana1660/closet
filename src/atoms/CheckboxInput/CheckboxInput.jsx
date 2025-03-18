@@ -29,9 +29,7 @@ export const CheckboxInput = ({
     const { value, checked } = e.target;
     setSelectedPriceOption(
       (prev) =>
-        checked
-          ? [...prev, parseInt(value)]
-          : prev.filter((item) => item !== value) // Add/remove item
+        checked ? [...prev, value] : prev.filter((item) => item !== value) // Add/remove item
     );
   };
 
@@ -47,7 +45,7 @@ export const CheckboxInput = ({
               id={pricingOptionList[option].value}
               value={pricingOptionList[option].value}
               checked={selectedPriceOption.includes(
-                pricingOptionList[option].value
+                `${pricingOptionList[option].value}`
               )}
               onChange={handlePricingOption}
             />

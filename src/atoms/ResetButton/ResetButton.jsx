@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
 import { StyledResetButton } from "./ResetButtonStyle";
 
-export const ResetButton = ({ buttonText }) => {
-  return <StyledResetButton>{buttonText}</StyledResetButton>;
+export const ResetButton = ({ buttonText, handleReset }) => {
+  return (
+    <StyledResetButton onClick={handleReset}>{buttonText}</StyledResetButton>
+  );
 };
 
 ResetButton.prototype = {

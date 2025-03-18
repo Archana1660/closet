@@ -12,6 +12,7 @@ import { fetchProducts } from "../redux/slice/ProductStoreSlice";
 import {
   setSearchKeyword,
   setFilterOption,
+  resetOptions,
 } from "../redux/slice/ProductStoreSlice";
 import { selectFilteredProducts } from "../redux/selectors/selectProduct";
 
@@ -31,6 +32,12 @@ export const ShoppingDashboardPage = () => {
     dispatch(setFilterOption(selectedPriceOption));
   };
 
+  const handleReset = () => {
+    setKeyword("");
+    setSelectedPriceOption([]);
+    dispatch(resetOptions(true));
+  };
+
   const productDataLoading = useSelector((state) => state.products?.isLoading);
   const filteredProducts = useSelector(selectFilteredProducts);
 
@@ -48,7 +55,7 @@ export const ShoppingDashboardPage = () => {
               selectedPriceOption={selectedPriceOption}
               setSelectedPriceOption={setSelectedPriceOption}
             />
-            <ResetButton buttonText="Reset" />
+            <ResetButton buttonText="Reset" handleReset={handleReset} p />
           </StyledSection>
         </form>
         <ProductList

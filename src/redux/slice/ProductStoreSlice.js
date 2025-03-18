@@ -10,6 +10,7 @@ const initialState = {
     isLoading: false,
     data: null,
     isError: false,
+    isReset: false,
     searchKeyword: "",
     selectedPricingOption: null
 }
@@ -23,6 +24,9 @@ const ProductStoreSlice = createSlice({
         },
         setFilterOption: (state, action) => {
             state.selectedPricingOption = action.payload
+        },
+        resetOptions: (state, action) => {
+            state.isReset = action.payload
         },
     },
     extraReducers: (builder) => {
@@ -38,5 +42,5 @@ const ProductStoreSlice = createSlice({
         })
     }
 })
-export const { setSearchKeyword, setFilterOption } = ProductStoreSlice.actions;
+export const { setSearchKeyword, setFilterOption, resetOptions } = ProductStoreSlice.actions;
 export default ProductStoreSlice.reducer;
