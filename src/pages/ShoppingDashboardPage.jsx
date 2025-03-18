@@ -1,15 +1,8 @@
-import styled from "styled-components";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { fetchProducts } from "../redux/slice/ProductStoreSlice";
-
-const StyledMain = styled.main`
-  background-color: #000;
-  width: 100vw;
-  height: 100vh;
-  padding: 5rem 1rem 0 1rem;
-`;
+import { Layout } from "../templates/Layout";
 
 export const ShoppingDashboardPage = () => {
   const dispatch = useDispatch();
@@ -20,7 +13,7 @@ export const ShoppingDashboardPage = () => {
 
   return (
     <>
-      <StyledMain></StyledMain>
+      <Layout></Layout>
     </>
   );
 };
